@@ -18,8 +18,120 @@
 
 /*  Search bar */
 
-/* Current weather */
+/* Current weather
+
+
+header : #7c9ed5
+Header btn : 5d7ac1
+
+bg : a5cdf0
+
+
+
+*/
 
 div {
-  border: 5px solid red;
+  border-width: 0;
+}
+*{
+  box-sizing: border-box;
+}
+
+.app{
+  
+  width: calc(100vw - 80px);
+  background-color: #a5cdf0;
+  font-family: "Raleway", sans-serif;
+
+}
+
+.app header{
+  padding : 14px;
+  background-color: #7c9ed5;
+  width: 100%;
+  margin-bottom: 50px ;
+}
+
+.app header .btn{
+  color:#010745;
+  background-color: #5d7ac1;
+  padding: 14px;
+  margin-left: 5px;
+  border-width: 0;
+}
+
+.app header .search   {
+  background-color: transparent;
+  border-width: 0;
+  font-size: 20px;
+  color: white;
+}
+
+.today-weather{
+  color: #010745;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100% ;
+}
+
+.today-weather h2 {
+  display: inline-block;
+  text-align: center;
+  margin-right: 5px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.today-weather p{
+  font-size: 13px;
+  display: inline-block;
+  text-align: center;
+}
+
+.today-weather > p:nth-of-type(1){
+  color: white;
+font-size: 17px;
+font-weight: 900;
+}
+
+.today-weather p:nth-of-type(2){
+  font-size: 12px;
+  display: block;
+}
+
+
+.today-weather-details-title{
+  font-weight: 1000;
+  margin-right: 5px;
+}
+
+.today-weather-details-value{
+  margin-right: 10px;
+  font-weight: lighter;
+  font-size: 10px;
+  
+}
+
+.rest-of-today-weather{
+  width: 80%;
+  margin-top: 50px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+}
+
+.rest-of-today-weather div{
+  display: inline-block;
+}
+
+.rest-of-today-weather div p{
+  text-align: center;
+}
+
+.rest-of-today-weather div .hour{
+  margin-bottom: 45px;
 }
