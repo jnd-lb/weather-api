@@ -15,7 +15,7 @@ class WheatherNow extends React.Component {
 
       <div>
           <h2>Temperature</h2>
-          <p>10º to 11ºC</p>
+          <p>{this.props.temp}</p>
           <p>
               <span class="today-weather-details-title">Humidity</span>
               <span class="today-weather-details-value">78%</span>
