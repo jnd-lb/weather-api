@@ -1,0 +1,18 @@
+
+      
+
+
+
+    
+    Get current date 
+
+    loop through the list of tempData 
+        if element at i .date ==
+
+
+
+
+        while current date > element at i .date
+            skip
+            
+        
