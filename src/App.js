@@ -16,8 +16,6 @@ class App extends Component {
       data:[]
     };
     this.wheatherData = FakeWeather;
-
-    //this.list = this.getFliteredList(this.wheatherData.list);
   }
 
   handleInputChange = value => {
@@ -28,18 +26,27 @@ class App extends Component {
 
     let renderHTML = ()=>{
 
-      if(this.state.data.length > 0)
+      if(this.state.data.length > 0){
       return (
        <>
         <WheatherNow data={this.state.data[0]}/>
         <Wheather24Hours dataList={this.state.data} />  
        </>
-      );
+      );}else{
+        return(
+          <div class="no-data">
+            <p>No data to show please search for a city</p>
+          </div>
+        )
+      }
+
+
+
     }
     return ( 
       <>
         <div className="app">
-          <Search args={this.getFliteredList} />
+          <Search args={this.getFliteredList} error={this.handleError} />
           {
             renderHTML()
           }
@@ -73,7 +80,9 @@ class App extends Component {
     this.setState({data:list.slice(i)});
   }
   
- 
+  handleError = (msg)=>{
+      
+  }
 }
 
 export default App;

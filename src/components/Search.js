@@ -35,15 +35,16 @@ class Search extends React.Component {
 
   getData = () => {
     let city = document.querySelector(".search").value;
-    if ((city).trim() == "") return;
-    try {
+    if ((city).trim() == "") {alert("please enter a city name"); return;}
+    
       fetch(this.API + city + this.KEY)
         .then(response => response.json())
-        .then(data => this.props.args(data));
-    }
-    catch (e) {
-      
-    }
+        .then(data =>{
+          if(data.cod == 404) {throw "Misspeled City"};
+          this.props.args(data);
+        }).catch(e=>alert(e));
+   
+   
   }
 }
 export default Search;

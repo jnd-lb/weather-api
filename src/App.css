@@ -125,6 +125,12 @@ font-weight: 1000;
   margin-bottom: 20px;
 }
 
+.no-data{
+  width: 100vw;
+  padding: 40px;
+  text-align: center;
+}
+
 @media only screen and (max-width: 480px) {
   section{
     width: 100vw;
