@@ -3,19 +3,21 @@ import Search from "./components/Search";
 import WheatherNow from "./components/WheatherNow"
 import Wheather24Hours from "./components/Wheather24Hours"
 import FakeWeather from "./data/FakeWeather.json";
-import fakeWeatherData from "./fakeWeatherData.json";
 
 import "./App.css";
+
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Tala and Jihad"
+      name: "Tala and Jihad",
+      data:[]
     };
     this.wheatherData = FakeWeather;
 
-    this.list = this.getFliteredList(this.wheatherData.list);
+    //this.list = this.getFliteredList(this.wheatherData.list);
   }
 
   handleInputChange = value => {
@@ -23,39 +25,55 @@ class App extends Component {
   };
 
   render() {
-    return (
+
+    let renderHTML = ()=>{
+
+      if(this.state.data.length > 0)
+      return (
+       <>
+        <WheatherNow data={this.state.data[0]}/>
+        <Wheather24Hours dataList={this.state.data} />  
+       </>
+      );
+    }
+    return ( 
       <>
         <div className="app">
-          <Search />
-          <WheatherNow data={this.list[0]}/>
-          <Wheather24Hours dataList={this.list} />
+          <Search args={this.getFliteredList} />
+          {
+            renderHTML()
+          }
         </div>
       </>
     )
   }
 
   //Take a slice from the list starting from the current time
-  getFliteredList = (_list)=>{
-
-    //TODO fix the current date 
-    let today = new Date("2017-02-18 06:00:00");   
-    let time = today.getTime()/1000;
+  getFliteredList = ({list})=>{
+  
+    console.log(list);
+    let today = new Date();   
+    let time = today.getTime();
     let i = 0;
-
-    for(let index = 0 ; index < _list.length ; index++){
-      if(_list[index].dt > time) break;
+  
+    for(let index = 0 ; index < list.length ; index++){
+      console.log("%c%d","background:yellow;padding:10px",time);
+      console.log("%c%d","background:pink;padding:10px",new Date(list[index].dt_txt).getTime() );
+      if(new Date(list[index].dt_txt).getTime() > time) break;
       i = index;
     }
 
     // the mid point between the two times
-    let midPoint = _list[i-1].dt + 90*60000;
+    let midPoint = list[i+1].dt - 90*60000;
 
     if(time>midPoint){
         i++;
     }
 
-      return _list.slice(i);
+    this.setState({data:list.slice(i)});
   }
+  
+ 
 }
 
 export default App;
